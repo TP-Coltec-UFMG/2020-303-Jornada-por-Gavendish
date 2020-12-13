@@ -6,19 +6,10 @@ pygame.display.set_caption("AVENTURA?")
 
 direita = [pygame.image.load('imagens/R1.png'), pygame.image.load('imagens/R2.png'), pygame.image.load('imagens/R3.png'), pygame.image.load('imagens/R4.png'), pygame.image.load('imagens/R5.png'), pygame.image.load('imagens/R6.png'), pygame.image.load('imagens/R7.png'), pygame.image.load('imagens/R8.png'), pygame.image.load('imagens/R9.png')]
 esquerda = [pygame.image.load('imagens/L1.png'), pygame.image.load('imagens/L2.png'), pygame.image.load('imagens/L3.png'), pygame.image.load('imagens/L4.png'), pygame.image.load('imagens/L5.png'), pygame.image.load('imagens/L6.png'), pygame.image.load('imagens/L7.png'), pygame.image.load('imagens/L8.png'), pygame.image.load('imagens/L9.png')]
-fundo = pygame.image.load('imagens/bg.jpg')
+fundo = pygame.image.load('imagens/bg1.jpg')
 personagem = pygame.image.load('imagens/standing.png')
 
 clock = pygame.time.Clock()
-
-class Scenario:
-    def __init__(self, tela, personagem):
-        self.tela = tela
-        self.personagem = personagem
-
-    def desenhar_bordas(self, x, y, tamanho, altura, grossuraBorda, cor):
-        pygame.draw.rect(self.tela, cor, (x, y, tamanho, altura), grossuraBorda)
-
 
 class Character(pygame.sprite.Sprite):
     def __init__(self):
@@ -78,7 +69,7 @@ class Character(pygame.sprite.Sprite):
                 self.pulo = 10
                 self.verPulo = False
 
-def redrawGameWindow():
+def alterarPlanoFundo():
     tela.blit(fundo, (0, 0))
     jogador.alterar_personagem(tela)
 
@@ -86,12 +77,10 @@ def redrawGameWindow():
 
 if __name__ == "__main__":
     jogador = Character()
-    cenario = Scenario(tela, jogador)
 
     rodando = True
     while rodando:
         clock.tick(27)
-        #cenario.desenhar_bordas(0, 0, 900, 600, 100, AZUL)
 
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -100,4 +89,4 @@ if __name__ == "__main__":
         posicaoJogador = (jogador.x, jogador.y)
         teclas = pygame.key.get_pressed()
         jogador.processar_teclas(teclas)
-        redrawGameWindow()
+        alterarPlanoFundo()
