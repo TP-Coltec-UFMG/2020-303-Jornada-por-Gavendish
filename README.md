@@ -2,13 +2,20 @@
 Jogo acessível feito com pygame. Grupo de Arthur Feu, Caio Augusto, Gustavo Paiva e João Lucas. A ideia do jogo é criar uma aventura em que o jogador busca um tesouro escondido em uma terra distante. Será um **platformer, com mecânica de combate simples e implementação de obstáculos** para dificultar a caminhada do personagem principal em busca de seu objetivo.
 
 ## Como executar?
-Para executar o jogo de maneira eficiente, é recomendado que o usuário tenha a versão mais atualizada do python3.
+Para executar o jogo de maneira eficiente, é recomendado que o usuário tenha a versão mais atualizada do Python3.
 ```
 $ python3 --version
 Python 3.8.6rc1
 ``` 
-Além disso, se recomenda também utilizar a IDE pycharm para executar mais facilmente o código. Após baixar a pasta, ou cloná-la utilizando **git**, o usuário deve fazer o seguinte:
+Além disso, recomenda-se também utilizar a IDE PyCharm para executar mais facilmente o código. Após baixar a pasta, ou cloná-la utilizando o seguinte comando:
+```
+$git clone https://github.com/TP-Coltec-UFMG/Jornada-por-Gavendish
+```
+, o usuário deve fazer o seguinte:
 
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/comoexecutar.jpg">
+
+> Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *main.py* e clique em *Run 'main'*, na IDE PyCharm.
 ## Até o momento:
 Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e um sprite gratuito foi utilizado para construir o personagem.
 
