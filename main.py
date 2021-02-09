@@ -1,7 +1,6 @@
 # Trabalho feito em pygame pelo grupo João Lucas, Arthur Feu, Gustavo Paiva e Caio Augusto
 
 import pygame
-import time
 
 pygame.init()
 screen = pygame.display.set_mode((900, 600))
@@ -21,7 +20,7 @@ fps = 60
 # Classe dos botões
 
 
-class Button():
+class Button:
 	def __init__(self, x, y, image):
 		self.image = image
 		self.rect = self.image.get_rect()
@@ -52,27 +51,22 @@ class Button():
 # Classe do jogador
 
 
-class Player():
+class Player:
 	def __init__(self, x, y):
-		self.images_right = []
-		self.images_left = []
-		self.images_idle = []
-		self.images_dead = []
-		for num in range(1, 2):
-			img_idle = pygame.image.load(f'img/idle{num}.png')
-			img_idle = pygame.transform.scale(img_idle, (40, 80))
-			self.images_idle.append(img_idle)
+		self.imagesRight = []
+		self.imagesLeft = []
+		self.imagesDead = []
 		for num in range(1, 6):
 			img_right = pygame.image.load(f'img/walk{num}.png')
 			img_right = pygame.transform.scale(img_right, (40, 80))
 			img_left = pygame.transform.flip(img_right, True, False)
-			self.images_right.append(img_right)
-			self.images_left.append(img_left)
+			self.imagesRight.append(img_right)
+			self.imagesLeft.append(img_left)
 		for num in range(1, 7):
 			img_dead = pygame.image.load(f'img/death{num}.png')
 			img_dead = pygame.transform.scale(img_dead, (40, 80))
-			self.images_dead.append(img_dead)
-		self.image = self.images_right[3]
+			self.imagesDead.append(img_dead)
+		self.image = self.imagesRight[3]
 		self.rect = self.image.get_rect()
 		self.index = 0
 		self.walkcounter = 0
@@ -86,13 +80,12 @@ class Player():
 		self.direction = 0
 		self.in_air = True
 
-	def update(self, game_over):
+	def update(self, gameOver):
 		dx = 0
 		dy = 0
 		walk_cooldown = 5
-		stand_cooldown = 2
 
-		if game_over == 0:
+		if gameOver == 0:
 			# Captura das teclas do usuário
 			key = pygame.key.get_pressed()
 			if key[pygame.K_SPACE] and not self.jumped and not self.in_air:
@@ -117,20 +110,20 @@ class Player():
 				self.index = 0
 				self.standcounter += 1
 				if self.direction == 1:
-					self.image = self.images_right[3]
+					self.image = self.imagesRight[3]
 				if self.direction == -1:
-					self.image = self.images_left[3]
+					self.image = self.imagesLeft[3]
 
 			# Animação do personagem
 			if self.walkcounter > walk_cooldown:
 				self.walkcounter = 0
 				self.index += 1
-				if self.index >= len(self.images_right):
+				if self.index >= len(self.imagesRight):
 					self.index = 0
 				if self.direction == 1:
-					self.image = self.images_right[self.index]
+					self.image = self.imagesRight[self.index]
 				if self.direction == -1:
-					self.image = self.images_left[self.index]
+					self.image = self.imagesLeft[self.index]
 			# Gravidade
 			self.vel_y += 1
 			if self.vel_y > 10:
@@ -157,22 +150,22 @@ class Player():
 
 			# Checagem de colisão com os inimigos
 			if pygame.sprite.spritecollide(self, blob_group, False):
-				game_over = -1
+				gameOver = -1
 
 			# Checagem de colisão com a lava
 			if pygame.sprite.spritecollide(self, lava_group, False):
-				game_over = -1
+				gameOver = -1
 
 			# Atualização das coordenadas do jogador
 			self.rect.x += dx
 			self.rect.y += dy
 
-		elif game_over == -1:
+		elif gameOver == -1:
 			self.standcounter += 1
-			self.image = self.images_dead[self.index]
-			if self.standcounter > 5:
-				if self.index >= (len(self.images_dead) - 1):
-					return game_over
+			self.image = self.imagesDead[self.index]
+			if self.standcounter > 7:
+				if self.index >= (len(self.imagesDead) - 1):
+					return gameOver
 				else:
 					self.index += 1
 				self.standcounter = 0
@@ -181,12 +174,12 @@ class Player():
 		screen.blit(self.image, self.rect)
 		# pygame.draw.rect(screen, (255, 255, 255), self.rect, 2)
 
-		return game_over
+		return gameOver
 
 # Classe do mundo
 
 
-class World():
+class World:
 	def __init__(self, data):
 		self.tile_list = []
 		# Carregando as imagens de blocos
@@ -274,18 +267,18 @@ class Lava(pygame.sprite.Sprite):
 
 
 world_data = [
-[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-[1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0],
-[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 2, 2],
-[1, 7, 0, 0, 0, 0, 0, 5, 0, 0, 0, 3, 3, 0, 0, 0, 0, 1],
-[1, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 4, 3, 0, 0, 0, 1],
-[1, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 2, 1],
-[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 2, 2, 1, 1],
-[1, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-[1, 0, 0, 0, 0, 2, 1, 1, 1, 6, 6, 6, 6, 6, 1, 1, 1, 1],
-[1, 2, 2, 2, 2, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	[1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0],
+	[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 2, 2],
+	[1, 7, 0, 0, 0, 0, 0, 5, 0, 0, 0, 3, 3, 0, 0, 0, 0, 1],
+	[1, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 4, 3, 0, 0, 0, 1],
+	[1, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+	[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 2, 1],
+	[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 2, 2, 1, 1],
+	[1, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+	[1, 0, 0, 0, 0, 2, 1, 1, 1, 6, 6, 6, 6, 6, 1, 1, 1, 1],
+	[1, 2, 2, 2, 2, 1, 1, 1, 1, 4, 4, 4, 4, 4, 1, 1, 1, 1],
 ]
 
 player = Player(100, 600 - 130)
