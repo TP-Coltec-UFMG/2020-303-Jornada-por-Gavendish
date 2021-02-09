@@ -1,6 +1,14 @@
 # Jornada por Gavendish
 Jogo acessível feito com pygame. Grupo de Arthur Feu, Caio Augusto, Gustavo Paiva e João Lucas. A ideia do jogo é criar uma aventura em que o jogador busca um tesouro escondido em uma terra distante. Será um **platformer, com mecânica de combate simples e implementação de obstáculos** para dificultar a caminhada do personagem principal em busca de seu objetivo.
 
+## Como executar?
+Para executar o jogo de maneira eficiente, é recomendado que o usuário tenha a versão mais atualizada do python3.
+```
+$ python3 --version
+Python 3.8.6rc1
+``` 
+Além disso, se recomenda também utilizar a IDE pycharm para executar mais facilmente o código. Após baixar a pasta, ou cloná-la utilizando **git**, o usuário deve fazer o seguinte:
+
 ## Até o momento:
 Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e um sprite gratuito foi utilizado para construir o personagem.
 
