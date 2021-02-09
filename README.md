@@ -6,11 +6,11 @@ Até o momento, apenas duas funções foram implementadas: movimento do personag
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento09021.jpg">
 
-> Imagem com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos e obstáculos.
+> Imagem do dia 09/02 com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos e obstáculos.
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento09022.jpg">
 
-> Imagem mostrando quando o usuário morre, com o botão de reset aparecendo ao meio
+> Imagem do dia 09/02 mostrando quando o usuário morre, com o botão de reset aparecendo ao meio.
 
 ## Futuro:
 Para o futuro próximo, ficam planjeadas a implementação das funções de acessibilidade e o término de um nível básico.
