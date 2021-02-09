@@ -2,10 +2,13 @@
 Jogo acessível feito com pygame. Grupo de Arthur Feu, Caio Augusto, Gustavo Paiva e João Lucas. A ideia do jogo é criar uma aventura em que o jogador busca um tesouro escondido em uma terra distante. Será um **platformer, com mecânica de combate simples e implementação de obstáculos** para dificultar a caminhada do personagem principal em busca de seu objetivo.
 
 ## Como executar?
-Para executar o jogo de maneira eficiente, é recomendado que o usuário tenha a versão mais atualizada do Python3.
+Para executar o jogo, é recomendado que o usuário tenha a versão mais atualizada do Python3 e do GIT, para instalar o projeto. 
 ```
 $ python3 --version
 Python 3.8.6rc1
+
+$ git --version
+git version 2.24.0.windows.2
 ``` 
 Além disso, recomenda-se também utilizar a IDE PyCharm para executar mais facilmente o código. Após criar um projeto novo (vazio) e baixar a pasta, ou cloná-la utilizando o seguinte comando
 ```
