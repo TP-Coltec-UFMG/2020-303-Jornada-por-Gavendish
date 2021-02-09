@@ -7,9 +7,13 @@ Para executar o jogo de maneira eficiente, é recomendado que o usuário tenha a
 $ python3 --version
 Python 3.8.6rc1
 ``` 
-Além disso, recomenda-se também utilizar a IDE PyCharm para executar mais facilmente o código. Após baixar a pasta, ou cloná-la utilizando o seguinte comando:
+Além disso, recomenda-se também utilizar a IDE PyCharm para executar mais facilmente o código. Após criar um projeto novo (vazio) e baixar a pasta, ou cloná-la utilizando o seguinte comando
 ```
+# Clonando o repositório principal do jogo
 $ git clone https://github.com/TP-Coltec-UFMG/Jornada-por-Gavendish
+
+# Instalando as dependências necessárias
+$ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 ```
 , o usuário deve fazer o seguinte:
 
