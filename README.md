@@ -26,13 +26,17 @@ $ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 ## Até o momento:
 Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e um sprite gratuito foi utilizado para construir o personagem.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento09021.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento1002.jpg">
 
-> Imagem do dia 09/02 com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos e obstáculos.
+> Imagem do dia 10/02 com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos, os obstáculos, as moedas e a porta de saída.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento09022.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento10022.jpg">
 
-> Imagem do dia 09/02 mostrando quando o usuário morre, com o botão de reset aparecendo ao meio.
+> Imagem do dia 10/02 mostrando quando o usuário morre, com o botão de reset aparecendo ao meio e a mensagem de GAME OVER acima.
+
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento10023.jpg">
+
+> Imagem do dia 10/02 mostrando quando o usuário vence, com a mensagem de YOU WIN acima.
 
 ## Futuro:
-Para o futuro próximo, ficam planjeadas a implementação das funções de acessibilidade e o término de um nível básico.
+Para o futuro próximo, fica planjeada a implementação da acessibilidade, com uma opção de descrição do cenário mais um modo alto contraste (ex.: cores esverdeadas explicitando a natureza em evidência ao longo do cenário). O alto contraste se daria pelo cenário e pelas plataformas em tons de cinza, com o nosso boneco azul e os inimigos vermelhos.
