@@ -24,7 +24,7 @@ $ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 
 > Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *main.py* e clique em *Run 'main'*, na IDE PyCharm.
 ## Até o momento:
-Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e um sprite gratuito foi utilizado para construir o personagem.
+Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e sprites gratuito foram utilizados para construir o personagem e os inimigos.
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento1002.jpg">
 
@@ -39,4 +39,4 @@ Até o momento, apenas duas funções foram implementadas: movimento do personag
 > Imagem do dia 10/02 mostrando quando o usuário vence, com a mensagem de YOU WIN acima.
 
 ## Futuro:
-Para o futuro próximo, fica planjeada a implementação da acessibilidade, com uma opção de descrição do cenário mais um modo alto contraste (ex.: cores esverdeadas explicitando a natureza em evidência ao longo do cenário). O alto contraste se daria pelo cenário e pelas plataformas em tons de cinza, com o nosso boneco azul e os inimigos vermelhos.
+Para o futuro próximo, fica planjeada a implementação da acessibilidade, com uma opção de descrição do cenário mais um modo alto contraste (ex.: cores esverdeadas explicitando a natureza em evidência ao longo do cenário). O alto contraste se daria pelo cenário e pelas plataformas em tons de cinza, com o nosso boneco azul e os inimigos vermelhos. Além disso, serão desenvolvidos também novos níveis.
