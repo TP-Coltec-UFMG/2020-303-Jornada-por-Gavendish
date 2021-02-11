@@ -28,7 +28,7 @@ Até o momento, apenas duas funções foram implementadas: movimento do personag
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11021.jpg">
 
-> Imagem do dia 10/02 com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos, os obstáculos, as moedas, a chave e a porta de saída (trancada).
+> Imagem do dia 11/02 com o nível 1 do jogo, mostrando o sprite do jogador, as plataformas já existentes, os inimigos, os obstáculos, as moedas, a chave e a porta de saída (trancada).
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11022.jpg">
 
@@ -36,7 +36,11 @@ Até o momento, apenas duas funções foram implementadas: movimento do personag
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11023.jpg">
 
-> Imagem do dia 10/02 mostrando o nível 2 do jogo.
+> Imagem do dia 11/02 mostrando o nível 2 do jogo.
+
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11024.jpg">
+
+> Imagem do dia 11/02 mostrando a morte do jogador.
 
 ## Futuro:
 Para o futuro próximo, fica planjeada a implementação da acessibilidade, com uma opção de descrição do cenário mais um modo alto contraste (ex.: cores esverdeadas explicitando a natureza em evidência ao longo do cenário). O alto contraste se daria pelo cenário e pelas plataformas em tons de cinza, com o nosso boneco azul e os inimigos vermelhos. Além disso, serão desenvolvidos também novos níveis.
