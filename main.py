@@ -13,10 +13,12 @@ blue = (0, 0, 255)
 
 # Variáveis de auxílio
 tile_size = 50
-game_over = 0
+gameOver = 0
 level = 1
-max_levels = 1
-score = 0
+maxLevels = 2
+totalScore = 0
+scoreInLevel = 0
+keyCollected = 0
 clock = pygame.time.Clock()
 fps = 60
 
@@ -51,7 +53,6 @@ def reset_level(level):
 		world_data.append(list(data[num]))
 
 	world = World(world_data)
-
 	return world
 # Classe dos botões
 
@@ -203,8 +204,9 @@ class Player:
 				gameOver = -1
 
 			# Checagem de colisão com a porta de saída
-			if pygame.sprite.spritecollide(self, exit_group, False):
-				gameOver = 1
+			if keyCollected == 1:
+				if pygame.sprite.spritecollide(self, exit_group, False):
+					gameOver = 1
 
 			# Atualização das coordenadas do jogador
 			self.rect.x += dx
@@ -293,6 +295,9 @@ class World:
 				if tile == '8':
 					exitdoor = Exit(col_count * tile_size, row_count * tile_size - (tile_size // 2))
 					exit_group.add(exitdoor)
+				if tile == '9':
+					key = Key(col_count * tile_size, row_count * tile_size - (tile_size // 2))
+					key_group.add(key)
 				col_count += 1
 			row_count += 1
 
@@ -300,6 +305,7 @@ class World:
 		for tile in self.tile_list:
 			screen.blit(tile[0], tile[1])
 			# pygame.draw.rect(screen, (255, 255, 255), tile[1], 2)
+
 
 # Classe do inimigo
 
@@ -322,7 +328,6 @@ class Enemy(pygame.sprite.Sprite):
 		self.moveCounter = 0
 		self.spriteChanger = 0
 		self.index = 0
-
 
 	def update(self):
 		self.rect.x += self.moveDirection
@@ -365,6 +370,16 @@ class Coin(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = (x, y)
 
+# Classe da chave do jogo
+
+
+class Key(pygame.sprite.Sprite):
+	def __init__(self, x, y):
+		pygame.sprite.Sprite.__init__(self)
+		img = pygame.image.load('img/key.png')
+		self.image = pygame.transform.scale(img, (tile_size, tile_size // 2))
+		self.rect = self.image.get_rect()
+		self.rect.center = (x, y)
 
 # Classe da porta de saida do nível
 
@@ -372,11 +387,20 @@ class Coin(pygame.sprite.Sprite):
 class Exit(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		img = pygame.image.load('img/exit.png')
+		img = pygame.image.load('img/exitlocked.png')
 		self.image = pygame.transform.scale(img, (tile_size, int(tile_size * 1.5)))
 		self.rect = self.image.get_rect()
 		self.rect.x = x
 		self.rect.y = y
+		self.isLocked = True
+
+	def update(self):
+		if keyCollected == 0:
+			img = pygame.image.load('img/exitlocked.png')
+			self.image = pygame.transform.scale(img, (tile_size, int(tile_size * 1.5)))
+		if keyCollected == 1:
+			img = pygame.image.load('img/exit.png')
+			self.image = pygame.transform.scale(img, (tile_size, int(tile_size * 1.5)))
 
 
 # Carregando o mapa do jogo
@@ -395,8 +419,14 @@ enemy_group = pygame.sprite.Group()
 lava_group = pygame.sprite.Group()
 coin_group = pygame.sprite.Group()
 exit_group = pygame.sprite.Group()
-score_coin = Coin(tile_size // 2, tile_size // 2)
-coin_group.add(score_coin)
+key_group = pygame.sprite.Group()
+vanity_coin = pygame.sprite.Group()
+vanity_key = pygame.sprite.Group()
+
+score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
+score_key = Key(tile_size + 60, tile_size // 2 - 5)
+vanity_coin.add(score_coin)
+vanity_key.add(score_key)
 
 world = World(world_data)
 
@@ -404,59 +434,72 @@ world = World(world_data)
 restart_button = Button(900 // 2 - 50, 600 // 2, restart_img)
 exit_button = Button(900 // 2 + 50, 600 // 2, exit_img)
 
+# Loop do jogo
 run = True
 while run:
-
 	clock.tick(fps)
 	screen.blit(bg_img, (0, 0))
 	world.draw()
 
 	# Enquanto o jogador estiver no jogo
-	if game_over == 0:
+	if gameOver == 0:
 		enemy_group.update()
-		# Atualização do placar
-		# Checagem se a moeda foi coletada pelo jogador
+		# Atualização do placar, com checagem se a moeda foi coletada pelo jogador
 		if pygame.sprite.spritecollide(player, coin_group, True):
-			score += 1
-		draw_text('X ' + str(score), font_score, white, tile_size - 10, 10)
-	if game_over == 0:
+			totalScore += 1
+			scoreInLevel += 1
+		if pygame.sprite.spritecollide(player, key_group, True):
+			keyCollected = 1
+			exit_group.update()
+		draw_text('X ' + str(totalScore), font_score, white, tile_size - 10, 10)
+		draw_text('X ' + str(keyCollected), font_score, white, tile_size + 90, 10)
+	if gameOver == 0:
 		enemy_group.update()
 
 	enemy_group.draw(screen)
 	lava_group.draw(screen)
 	coin_group.draw(screen)
 	exit_group.draw(screen)
+	key_group.draw(screen)
+	vanity_key.draw(screen)
+	vanity_coin.draw(screen)
 
-	game_over = player.update(game_over)
+	gameOver = player.update(gameOver)
 
 	# Caso o jogador morra
-	if game_over == -1:
+	if gameOver == -1:
 		if restart_button.draw():
 			world_data = []
 			world = reset_level(level)
-			game_over = 0
-			score = 0
+			gameOver = 0
+			keyCollected = 0
+			totalScore -= scoreInLevel
 
 	# Caso o jogador ganhe
-	if game_over == 1:
+	if gameOver == 1:
 		# Reset do jogo e ida ao proximo nivel
 		level += 1
+		scoreInLevel = 0
+		coin_group.remove(coin_group)
+		key_group.remove(key_group)
 		# Caso ainda tenha mais níveis
-		if level <= max_levels:
+		if level <= maxLevels:
 			# Reset do nível
 			world_data = []
 			world = reset_level(level)
-			game_over = 0
+			gameOver = 0
+			keyCollected = 0
 		# Caso seja o último
 		else:
 			draw_text('YOU WIN!', font, blue, (900 // 2) - 100, 0)
 			if restart_button.draw():
+				# Reset do nível
 				level = 1
-				# reset level
 				world_data = []
 				world = reset_level(level)
-				game_over = 0
-				score = 0
+				gameOver = 0
+				keyCollected = 0
+				totalScore = 0
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
