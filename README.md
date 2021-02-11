@@ -26,17 +26,17 @@ $ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 ## Até o momento:
 Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e sprites gratuito foram utilizados para construir o personagem e os inimigos.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento1002.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11021.jpg">
 
-> Imagem do dia 10/02 com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos, os obstáculos, as moedas e a porta de saída.
+> Imagem do dia 10/02 com o conteúdo atual do jogo, demonstrando o sprite do jogador, as plataformas já existentes, os inimigos, os obstáculos, as moedas, a chave e a porta de saída (trancada).
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento10022.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11022.jpg">
 
-> Imagem do dia 10/02 mostrando quando o usuário morre, com o botão de reset aparecendo ao meio e a mensagem de GAME OVER acima.
+> Imagem do dia 10/02 mostrando a porta aberta, quando o usuário pega a chave.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento10023.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/ateomomento11023.jpg">
 
-> Imagem do dia 10/02 mostrando quando o usuário vence, com a mensagem de YOU WIN acima.
+> Imagem do dia 10/02 mostrando o nível 2 do jogo.
 
 ## Futuro:
 Para o futuro próximo, fica planjeada a implementação da acessibilidade, com uma opção de descrição do cenário mais um modo alto contraste (ex.: cores esverdeadas explicitando a natureza em evidência ao longo do cenário). O alto contraste se daria pelo cenário e pelas plataformas em tons de cinza, com o nosso boneco azul e os inimigos vermelhos. Além disso, serão desenvolvidos também novos níveis.
