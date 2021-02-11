@@ -206,6 +206,8 @@ class Player:
 			# Checagem de colisão com a porta de saída
 			if keyCollected == 1:
 				if pygame.sprite.spritecollide(self, exit_group, False):
+					vanity_coin.remove(vanity_coin)
+					vanity_key.remove(vanity_key)
 					gameOver = 1
 
 			# Atualização das coordenadas do jogador
@@ -214,6 +216,8 @@ class Player:
 
 		elif gameOver == -1:
 			draw_text('GAME OVER!', font, white, (900 // 2) - 150, 0)
+			vanity_coin.remove(vanity_coin)
+			vanity_key.remove(vanity_key)
 			self.standCounter += 1
 			self.image = self.imagesDead[self.index]
 			if self.standCounter > 7:
@@ -474,6 +478,11 @@ while run:
 			gameOver = 0
 			keyCollected = 0
 			totalScore -= scoreInLevel
+			scoreInLevel = 0
+			score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
+			score_key = Key(tile_size + 60, tile_size // 2 - 5)
+			vanity_coin.add(score_coin)
+			vanity_key.add(score_key)
 
 	# Caso o jogador ganhe
 	if gameOver == 1:
@@ -489,6 +498,10 @@ while run:
 			world = reset_level(level)
 			gameOver = 0
 			keyCollected = 0
+			score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
+			score_key = Key(tile_size + 60, tile_size // 2 - 5)
+			vanity_coin.add(score_coin)
+			vanity_key.add(score_key)
 		# Caso seja o último
 		else:
 			draw_text('YOU WIN!', font, blue, (900 // 2) - 100, 0)
@@ -500,6 +513,10 @@ while run:
 				gameOver = 0
 				keyCollected = 0
 				totalScore = 0
+				score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
+				score_key = Key(tile_size + 60, tile_size // 2 - 5)
+				vanity_coin.add(score_coin)
+				vanity_key.add(score_key)
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
