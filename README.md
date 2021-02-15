@@ -22,7 +22,12 @@ $ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/comoexecutar.jpg">
 
-> Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *main.py* e clique em *Run 'main'*, na IDE PyCharm.
+> Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *main.py* e clique em *Run 'main'*, na IDE PyCharm. 
+
+Caso seja necessário, selecione o interpretador correto:
+
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/comoexecutar2.jpg">
+
 ## Até o momento:
 Até o momento, apenas duas funções foram implementadas: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e sprites gratuito foram utilizados para construir o personagem e os inimigos.
 
