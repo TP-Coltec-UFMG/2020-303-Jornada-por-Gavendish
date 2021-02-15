@@ -83,7 +83,7 @@ class World:
         exit_group.empty()
 
         # load in level data and create world
-        archive = open(f'level{level}.txt', 'r')
+        archive = open(f'levels/level{level}.txt', 'r')
         data = archive.read()
         archive.close()
         data = data.split('\n')
