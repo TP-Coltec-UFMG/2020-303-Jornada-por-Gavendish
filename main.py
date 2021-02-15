@@ -69,7 +69,7 @@ class Button:
 
 # Carregando o mapa do jogo
 
-archive = open(f'level{level}.txt', 'r')
+archive = open(f'levels/level{level}.txt', 'r')
 data = archive.read()
 archive.close()
 data = data.split('\n')
