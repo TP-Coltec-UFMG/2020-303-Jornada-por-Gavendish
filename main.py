@@ -11,33 +11,15 @@ screen = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Jornada por Gavendish')
 
 # Fontes e cores
-font = pygame.font.SysFont('Bauhaus 93', 70)
-font_score = pygame.font.SysFont('Bauhaus 93', 30)
+font = "Retro.ttf"
 white = (255, 255, 255)
-blue = (0, 0, 255)
-
-# Variáveis de auxílio
-tile_size = 50
-gameOver = 0
-level = 1
-maxLevels = 2
-totalScore = 0
-scoreInLevel = 0
-keyCollected = 0
-clock = pygame.time.Clock()
-fps = 60
+black = (0, 0, 0)
 
 
-def draw_text(text, font, text_col, x, y):
-	img = font.render(text, True, text_col)
-	screen.blit(img, (x, y))
-
-
-# Carregando as imagens
-bg_img = pygame.image.load('img/bg1.png')
-restart_img = pygame.image.load('img/restart_btn.png')
-exit_img = pygame.image.load('img/exit_btn.png')
-exit_img = pygame.transform.scale(exit_img, (120, 42))
+def text_format(message, textFont, textSize, textColor):
+	newFont = pygame.font.Font(textFont, textSize)
+	newText = newFont.render(message, False, textColor)
+	return newText
 
 # Classe dos botões
 
@@ -45,6 +27,7 @@ exit_img = pygame.transform.scale(exit_img, (120, 42))
 class Button:
 	def __init__(self, x, y, image):
 		self.image = image
+		self.image = pygame.transform.scale(self.image, (200, 50))
 		self.rect = self.image.get_rect()
 		self.rect.x = x
 		self.rect.y = y
@@ -67,121 +50,139 @@ class Button:
 		return action
 
 
-# Carregando o mapa do jogo
+class Main:
+	def __init__(self, daltonism):
+		# Variáveis de auxílio
+		self.tile_size = 50
+		self.gameOver = 0
+		self.level = 1
+		self.maxLevels = 2
+		self.totalScore = 0
+		self.scoreInLevel = 0
+		self.keyCollected = 0
+		clock = pygame.time.Clock()
+		self.fps = 60
+		self.daltonism = daltonism
 
-archive = open(f'levels/level{level}.txt', 'r')
-data = archive.read()
-archive.close()
-data = data.split('\n')
-world_data = []
-for num in range(0, 12):
-	world_data.append(list(data[num]))
+		# Carregando as imagens
+		bgImg = pygame.image.load(f'img/{self.daltonism}/bg1.png')
+		restartImg = pygame.image.load(f'img/{self.daltonism}/restart_btn.jpg')
 
-player = Player(100, 600 - 130)
+		# Carregando o mapa do jogo
+		archive = open(f'levels/level{self.level}.txt', 'r')
+		data = archive.read()
+		archive.close()
+		data = data.split('\n')
+		world_data = []
+		for num in range(0, 12):
+			world_data.append(list(data[num]))
 
-enemy_group = pygame.sprite.Group()
-lava_group = pygame.sprite.Group()
-coin_group = pygame.sprite.Group()
-exit_group = pygame.sprite.Group()
-key_group = pygame.sprite.Group()
+		player = Player(100, 600 - 130, self.daltonism)
 
-vanity_coin = pygame.sprite.Group()
-vanity_key = pygame.sprite.Group()
-score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
-score_key = Key(tile_size + 60, tile_size // 2 - 5)
-vanity_coin.add(score_coin)
-vanity_key.add(score_key)
+		enemyGroup = pygame.sprite.Group()
+		lavaGroup = pygame.sprite.Group()
+		coinGroup = pygame.sprite.Group()
+		exitGroup = pygame.sprite.Group()
+		keyGroup = pygame.sprite.Group()
 
-world = World(world_data, enemy_group, lava_group, coin_group, exit_group, key_group)
+		vanityCoin = pygame.sprite.Group()
+		vanityKey = pygame.sprite.Group()
+		scoreCoin = Coin(self.tile_size // 2 - 3, self.tile_size // 2 - 8, self.daltonism)
+		scoreKey = Key(self.tile_size + 60, self.tile_size // 2 - 5, self.daltonism)
+		vanityCoin.add(scoreCoin)
+		vanityKey.add(scoreKey)
 
-# Criação dos botões
-restart_button = Button(900 // 2 - 50, 600 // 2, restart_img)
-exit_button = Button(900 // 2 + 50, 600 // 2, exit_img)
+		world = World(world_data, enemyGroup, lavaGroup, coinGroup, exitGroup, keyGroup, self.daltonism)
 
-# Loop do jogo
-run = True
-while run:
-	clock.tick(fps)
-	screen.blit(bg_img, (0, 0))
-	world.draw()
+		# Criação dos botões
+		restartButton = Button(900 // 2 - 100, 600 // 2, restartImg)
 
-	# Enquanto o jogador estiver no jogo
-	if gameOver == 0:
-		enemy_group.update()
-		# Atualização do placar, com checagem se a moeda foi coletada pelo jogador
-		if pygame.sprite.spritecollide(player, coin_group, True):
-			totalScore += 1
-			scoreInLevel += 1
-		if pygame.sprite.spritecollide(player, key_group, True):
-			keyCollected = 1
-			exit_group.update(keyCollected)
-		draw_text('X ' + str(totalScore), font_score, white, tile_size - 10, 10)
-		draw_text('X ' + str(keyCollected), font_score, white, tile_size + 90, 10)
-	if gameOver == 0:
-		enemy_group.update()
+		# Loop do jogo
+		run = True
+		while run:
+			clock.tick(self.fps)
+			screen.blit(bgImg, (0, 0))
+			world.draw()
 
-	enemy_group.draw(screen)
-	lava_group.draw(screen)
-	coin_group.draw(screen)
-	exit_group.draw(screen)
-	key_group.draw(screen)
-	vanity_key.draw(screen)
-	vanity_coin.draw(screen)
+			# Enquanto o jogador estiver no jogo
+			if self.gameOver == 0:
+				enemyGroup.update()
+				# Atualização do placar, com checagem se a moeda foi coletada pelo jogador
+				if pygame.sprite.spritecollide(player, coinGroup, True):
+					self.totalScore += 1
+					self.scoreInLevel += 1
+				if pygame.sprite.spritecollide(player, keyGroup, True):
+					self.keyCollected = 1
+					exitGroup.update(self.keyCollected, self.daltonism)
+				coinscoreText = text_format('X ' + str(self.totalScore), font, 30, white)
+				keyscoreText = text_format('X ' + str(self.keyCollected), font, 30, white)
+				coinscoreRect = coinscoreText.get_rect()
+				screen.blit(coinscoreText, (60 - (coinscoreRect[2]/2), 5))
+				keyscoreRect = keyscoreText.get_rect()
+				screen.blit(keyscoreText, (160 - (keyscoreRect[2]/2), 5))
+			if self.gameOver == 0:
+				enemyGroup.update()
 
-	gameOver = player.update(gameOver, world, enemy_group, lava_group, exit_group, keyCollected, vanity_coin, vanity_key)
+			enemyGroup.draw(screen)
+			lavaGroup.draw(screen)
+			coinGroup.draw(screen)
+			exitGroup.draw(screen)
+			keyGroup.draw(screen)
+			vanityKey.draw(screen)
+			vanityCoin.draw(screen)
 
-	# Caso o jogador morra
-	if gameOver == -1:
-		if restart_button.draw():
-			world_data = []
-			world = World.reset_level(level, player, enemy_group, lava_group, exit_group, coin_group, key_group)
-			gameOver = 0
-			keyCollected = 0
-			totalScore -= scoreInLevel
-			scoreInLevel = 0
-			score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
-			score_key = Key(tile_size + 60, tile_size // 2 - 5)
-			vanity_coin.add(score_coin)
-			vanity_key.add(score_key)
+			self.gameOver = player.update(self.gameOver, world, enemyGroup, lavaGroup, exitGroup, self.keyCollected, vanityCoin, vanityKey)
 
-	# Caso o jogador ganhe
-	if gameOver == 1:
-		# Reset do jogo e ida ao proximo nivel
-		level += 1
-		scoreInLevel = 0
-		coin_group.remove(coin_group)
-		key_group.remove(key_group)
-		# Caso ainda tenha mais níveis
-		if level <= maxLevels:
-			# Reset do nível
-			world_data = []
-			world = World.reset_level(level, player, enemy_group, lava_group, exit_group, coin_group, key_group)
-			gameOver = 0
-			keyCollected = 0
-			score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
-			score_key = Key(tile_size + 60, tile_size // 2 - 5)
-			vanity_coin.add(score_coin)
-			vanity_key.add(score_key)
-		# Caso seja o último
-		else:
-			draw_text('YOU WIN!', font, blue, (900 // 2) - 100, 0)
-			if restart_button.draw():
-				# Reset do nível
-				level = 1
-				world_data = []
-				world = World.reset_level(level, player, enemy_group, lava_group, exit_group, coin_group, key_group)
-				gameOver = 0
-				keyCollected = 0
-				totalScore = 0
-				score_coin = Coin(tile_size // 2 - 3, tile_size // 2 - 8)
-				score_key = Key(tile_size + 60, tile_size // 2 - 5)
-				vanity_coin.add(score_coin)
-				vanity_key.add(score_key)
+			# Caso o jogador morra
+			if self.gameOver == -1:
+				if restartButton.draw():
+					world = World.reset_level(self.level, player, enemyGroup, lavaGroup, exitGroup, coinGroup, keyGroup, self.daltonism)
+					self.gameOver = 0
+					self.keyCollected = 0
+					self.totalScore -= self.scoreInLevel
+					self.scoreInLevel = 0
+					scoreCoin = Coin(self.tile_size // 2 - 3, self.tile_size // 2 - 8, self.daltonism)
+					scoreKey = Key(self.tile_size + 60, self.tile_size // 2 - 5, self.daltonism)
+					vanityCoin.add(scoreCoin)
+					vanityKey.add(scoreKey)
 
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			run = False
+			# Caso o jogador ganhe
+			if self.gameOver == 1:
+				# Reset do jogo e ida ao proximo nivel
+				self.level += 1
+				self.scoreInLevel = 0
+				coinGroup.remove(coinGroup)
+				keyGroup.remove(keyGroup)
+				# Caso ainda tenha mais níveis
+				if self.level <= self.maxLevels:
+					# Reset do nível
+					world = World.reset_level(self.level, player, enemyGroup, lavaGroup, exitGroup, coinGroup, keyGroup, self.daltonism)
+					self.gameOver = 0
+					self.keyCollected = 0
+					scoreCoin = Coin(self.tile_size // 2 - 3, self.tile_size // 2 - 8, self.daltonism)
+					scoreKey = Key(self.tile_size + 60, self.tile_size // 2 - 5, self.daltonism)
+					vanityCoin.add(scoreCoin)
+					vanityKey.add(scoreKey)
+				# Caso seja o último
+				else:
+					wonText = text_format('VOCE VENCEU!', font, 75, black)
+					screen.blit(wonText, (600/2, -10))
+					if restartButton.draw():
+						# Reset do nível
+						level = 1
+						world = World.reset_level(level, player, enemyGroup, lavaGroup, exitGroup, coinGroup, keyGroup, self.daltonism)
+						self.gameOver = 0
+						self.keyCollected = 0
+						self.totalScore = 0
+						scoreCoin = Coin(self.tile_size // 2 - 3, self.tile_size // 2 - 8, self.daltonism)
+						scoreKey = Key(self.tile_size + 60, self.tile_size // 2 - 5, self.daltonism)
+						vanityCoin.add(scoreCoin)
+						vanityKey.add(scoreKey)
 
-	pygame.display.update()
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					run = False
 
-pygame.quit()
+			pygame.display.update()
+
+		pygame.quit()
