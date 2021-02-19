@@ -1,13 +1,13 @@
 import pygame
 
 # Classe da moeda do jogo
-tile_size = 50
+tileSize = 50
 
 
 class Coin(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, daltonism):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load('img/coin.png')
-        self.image = pygame.transform.scale(img, (tile_size // 2, tile_size // 2))
+        img = pygame.image.load(f'img/{daltonism}/coin.png')
+        self.image = pygame.transform.scale(img, (tileSize // 2, tileSize // 2))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
