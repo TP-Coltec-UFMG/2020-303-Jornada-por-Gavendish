@@ -93,9 +93,9 @@ def main_menu():
             screen.fill(black)
             title = text_format("Jornada por Gavendish", font, 90, yellow)
             if selected == "start":
-                textStart = text_format("REINICIAR", font, 75, yellow)
+                textStart = text_format("INICIAR", font, 75, yellow)
             else:
-                textStart = text_format("REINICIAR", font, 75, white)
+                textStart = text_format("INICIAR", font, 75, white)
             if selected == "quit":
                 textQuit = text_format("SAIR", font, 75, yellow)
             else:
