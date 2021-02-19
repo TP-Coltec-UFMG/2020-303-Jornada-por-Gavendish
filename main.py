@@ -165,7 +165,7 @@ class Main:
 					vanityKey.add(scoreKey)
 				# Caso seja o último
 				else:
-					wonText = text_format('VOCE VENCEU!', font, 75, black)
+					wonText = text_format('VOCE VENCEU!', font, 75, white)
 					screen.blit(wonText, (600/2, -10))
 					if restartButton.draw():
 						# Reset do nível
