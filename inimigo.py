@@ -3,15 +3,15 @@ import pygame
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, daltonism):
         pygame.sprite.Sprite.__init__(self)
         self.imagesRight = []
         self.imagesLeft = []
         for num in range(1, 4):
-            imgWalk = pygame.image.load(f'img/enemy{num}.png')
-            self.imagesRight.append(imgWalk)
-            img_left = pygame.transform.flip(imgWalk, True, False)
-            self.imagesLeft.append(img_left)
+            imgRight = pygame.image.load(f'img/{daltonism}/enemy{num}.png')
+            self.imagesRight.append(imgRight)
+            imgLeft = pygame.transform.flip(imgRight, True, False)
+            self.imagesLeft.append(imgLeft)
         self.image = self.imagesRight[0]
         self.rect = self.image.get_rect()
         self.rect.x = x
