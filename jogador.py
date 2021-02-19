@@ -1,41 +1,37 @@
 import pygame
+
 from mundo import World
 pygame.init()
 screen = pygame.display.set_mode((900, 600))
 
 # Fontes e cores
-font = pygame.font.SysFont('Bauhaus 93', 70)
-font_score = pygame.font.SysFont('Bauhaus 93', 30)
+font = "Retro.ttf"
 white = (255, 255, 255)
 blue = (0, 0, 255)
 
 
-def draw_text(text, font, text_col, x, y):
-    img = font.render(text, True, text_col)
-    screen.blit(img, (x, y))
+def text_format(message, textFont, textSize, textColor):
+    newFont = pygame.font.Font(textFont, textSize)
+    newText = newFont.render(message, False, textColor)
+    return newText
 
 
 class Player:
-    def __init__(self, x, y):
+    def __init__(self, x, y, daltonism):
         self.imagesRight = []
         self.imagesLeft = []
         self.imagesDead = []
-        self.imagesIdle = []
         for num in range(1, 6):
-            imgRight = pygame.image.load(f'img/walk{num}.png')
+            imgRight = pygame.image.load(f'img/{daltonism}/walk{num}.png')
             imgRight = pygame.transform.scale(imgRight, (40, 80))
             imgLeft = pygame.transform.flip(imgRight, True, False)
             self.imagesRight.append(imgRight)
             self.imagesLeft.append(imgLeft)
         for num in range(1, 7):
-            imgDead = pygame.image.load(f'img/death{num}.png')
+            imgDead = pygame.image.load(f'img/{daltonism}/death{num}.png')
             imgDead = pygame.transform.scale(imgDead, (40, 80))
             self.imagesDead.append(imgDead)
-        for num in range(1, 2):
-            imgIdle = pygame.image.load(f'img/idle{num}.png')
-            imgIdle = pygame.transform.scale(imgIdle, (40, 80))
-            self.imagesIdle.append(imgIdle)
-        self.image = self.imagesIdle[0]
+        self.image = self.imagesRight[3]
         self.rect = self.image.get_rect()
         self.index = 0
         self.walkCounter = 0
@@ -143,7 +139,8 @@ class Player:
             self.rect.y += dy
 
         elif gameOver == -1:
-            draw_text('GAME OVER!', font, white, (900 // 2) - 150, 0)
+            lose_text = text_format('VOCE PERDEU!', font, 75, white)
+            screen.blit(lose_text, (600/2, -10))
             vanity_coin.remove(vanity_coin)
             vanity_key.remove(vanity_key)
             self.standCounter += 1
