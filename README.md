@@ -22,7 +22,7 @@ $ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/comoexecutar.jpg">
 
-> Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *main.py* e clique em *Run 'main'*, na IDE PyCharm. 
+> Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *menu.py* e clique em *Run 'menu'*, na IDE PyCharm. 
 
 Caso seja necessário, selecione o interpretador correto:
 
