@@ -1,18 +1,11 @@
 import pygame
 from pygame.locals import *
-import os
 from main import Main
 
-# Game Initialization
 pygame.init()
-
-# Center the Game Application
-os.environ['SDL_VIDEO_CENTERED'] = '1'
-
-# Game Resolution
 screen = pygame.display.set_mode((900, 600))
 
-# Text Renderer
+# Função que renderiza o texto na tela
 
 
 def text_format(message, textFont, textSize, textColor):
@@ -22,7 +15,7 @@ def text_format(message, textFont, textSize, textColor):
     return newText
 
 
-# Colors
+# Cores e fontes
 white = (255, 255, 255)
 black = (0, 0, 0)
 gray = (50, 50, 50)
@@ -30,15 +23,13 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 yellow = (255, 255, 0)
-
-# Game Fonts
 font = "Retro.ttf"
 
-# Game Framerate
+# FPS do menu
 clock = pygame.time.Clock()
 FPS = 30
 
-# Main Menu
+# Loop principal, que renderiza os textos e
 
 
 def main_menu():
@@ -47,6 +38,7 @@ def main_menu():
     started = False
 
     while menu:
+        # Se o usuário não clicou em iniciar, ou seja, started == false
         if not started:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -61,6 +53,7 @@ def main_menu():
                             started = True
                         if selected == "quit":
                             pygame.quit()
+        # Se o usuário clicou em iniciar, ou seja, started == true
         if started:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -77,18 +70,14 @@ def main_menu():
                     if event.key == pygame.K_RETURN:
                         if selected == "normal":
                             main = Main(selected)
-                            main.__init__(selected)
                         elif selected == "protanopia":
                             main = Main(selected)
-                            main.__init__(selected)
                         elif selected == "deuteranopia":
                             main = Main(selected)
-                            main.__init__(selected)
                         elif selected == "tritanopia":
                             main = Main(selected)
-                            main.__init__(selected)
 
-        # Main Menu UI
+        # UI do menu principal
         if not started:
             screen.fill(black)
             title = text_format("Jornada por Gavendish", font, 90, yellow)
@@ -105,7 +94,7 @@ def main_menu():
             startRect = textStart.get_rect()
             quitRect = textQuit.get_rect()
 
-            # Main Menu Text
+            # Texto do menu principal
             screen.blit(title, (900/2 - (titleRect[2]/2), 80))
             screen.blit(textStart, (900/2 - (startRect[2]/2), 300))
             screen.blit(textQuit, (900/2 - (quitRect[2]/2), 360))
@@ -113,7 +102,7 @@ def main_menu():
             clock.tick(FPS)
             pygame.display.set_caption("Jornada por Gavendish")
 
-        # Sub Menu UI
+        # UI do sub menu "iniciar"
         if started:
             screen.fill(black)
             title = text_format("Selecione o modo de jogo", font, 90, yellow)
@@ -142,7 +131,7 @@ def main_menu():
             titleRect = title.get_rect()
             subtitleRect = subtitle.get_rect()
 
-            # Sub Menu Text
+            # Texto do sub menu
             screen.blit(title, (900 / 2 - (titleRect[2] / 2), 80))
             screen.blit(subtitle, (900 / 2 - (subtitleRect[2] / 2), 160))
             screen.blit(textNormal, (900 / 2 - (normalRect[2] / 2), 240))
@@ -153,7 +142,8 @@ def main_menu():
             pygame.display.update()
             clock.tick(FPS)
             pygame.display.set_caption("Jornada por Gavendish")
-# Initialize the Game
+
+# Inicializando o menu
 
 
 main_menu()
