@@ -22,6 +22,7 @@ class Enemy(pygame.sprite.Sprite):
         self.index = 0
 
     def update(self):
+        # Movimentação e atualização de sprite
         self.rect.x += self.moveDirection
         self.moveCounter += 1
         self.spriteChanger += 1
