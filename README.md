@@ -1,5 +1,5 @@
 # Jornada por Gavendish
-Jogo acessível feito com pygame. Grupo de Arthur Feu, Caio Augusto, Gustavo Paiva e João Lucas. A ideia do jogo é criar uma aventura em que o jogador busca um tesouro escondido em uma terra distante. Será um **platformer com obstáculos vivos** para dificultar a caminhada do personagem principal em busca de seu objetivo.
+Jogo acessível feito com pygame. Grupo de Arthur Feu, Caio Augusto, Gustavo Paiva e João Lucas. A ideia do jogo é criar uma aventura em que o jogador busca um tesouro escondido em uma terra distante. Será um **platformer com obstáculos** para dificultar a caminhada do personagem principal em busca de seu objetivo.
 
 ## Como executar?
 Para executar o jogo, é recomendado que o usuário tenha a versão mais atualizada do Python3 e do GIT, para instalar o projeto. 
