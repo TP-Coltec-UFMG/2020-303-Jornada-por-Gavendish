@@ -29,7 +29,7 @@ Caso seja necessário, selecione o interpretador correto:
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/comoexecutar2.jpg">
 
 ## Até o momento:
-Até o momento, os seguintes elementos foram implementados: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e sprites gratuito foram utilizados para construir o personagem e os inimigos. Além disso, os sprites também foram adaptados para os daltonismos existentes, que são os seguintes:
+Até o momento, os seguintes elementos foram implementados: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e sprites gratuito foram utilizados para construir o personagem e os inimigos. Sons disponibilizados gratuitamente na internet foram utilizados para compor os efeitos especiais do jogo. Além disso, os sprites também foram adaptados para os daltonismos existentes, que são os seguintes:
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/daltonismotipos.png">
 
