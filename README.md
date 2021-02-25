@@ -20,56 +20,56 @@ $ pip3 install --requirement Jornada-por-Gavendish/requirements.txt
 ```
 , o usuário deve fazer o seguinte:
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/comoexecutar.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/comoexecutar.jpg">
 
 > Para executar, basta que o usuário clique com o botão direito do mouse no arquivo *menu.py* e clique em *Run 'menu'*, na IDE PyCharm. 
 
 Caso seja necessário, selecione o interpretador correto:
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/comoexecutar2.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/comoexecutar2.jpg">
 
 ## Até o momento:
 Até o momento, os seguintes elementos foram implementados: movimento do personagem principal e alteração do sprite, conforme o movimento, para dar animação. Além disso, uma fase básica foi criada, com plataformas para o usuário interagir. Sprites próprios foram criados, como o dos blocos, e sprites gratuito foram utilizados para construir o personagem e os inimigos. Além disso, os sprites também foram adaptados para os daltonismos existentes, que são os seguintes:
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/daltonismotipos.png">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/daltonismotipos.png">
 
 > Imagem mostrando os tipos de daltonismos e qual cor eles impactam.
 
 Agora imagens do jogo em si:
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/menu1.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/menu1.jpg">
 
 > Imagem mostrando o menu do jogo.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/menu2.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/menu2.jpg">
 
 > Imagem mostrando o submenu de seleção do modo de jogo, de acordo com a necessidade do usuário.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/telanormal.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/telanormal.jpg">
 
 > Imagem mostrando a tela sem filtros de daltonismo.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/telaprotanopia.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/telaprotanopia.jpg">
 
 > Imagem mostrando a tela com o filtro de protanopia.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/teladeuteranopia.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/teladeuteranopia.jpg">
 
 > Imagem mostrando a tela com o filtro de deuteranopia.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/telatritanopia.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/telatritanopia.jpg">
 
 > Imagem mostrando a tela com o filtro de tritanopia.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/morte.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/morte.jpg">
 
 > Imagem mostrando a tela após a morte do jogador.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/nivel2.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/nivel2.jpg">
 
 > Imagem mostrando o nível 2 do jogo.
 
-<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/img/vitoria.jpg">
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/vitoria.jpg">
 
 > Imagem mostrando a vitória do jogador.
 
