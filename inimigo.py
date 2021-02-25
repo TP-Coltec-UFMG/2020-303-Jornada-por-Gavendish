@@ -8,7 +8,7 @@ class Enemy(pygame.sprite.Sprite):
         self.imagesRight = []
         self.imagesLeft = []
         for num in range(1, 4):
-            imgRight = pygame.image.load(f'img/{daltonism}/enemy{num}.png')
+            imgRight = pygame.image.load(f'assets/img/{daltonism}/enemy{num}.png')
             self.imagesRight.append(imgRight)
             imgLeft = pygame.transform.flip(imgRight, True, False)
             self.imagesLeft.append(imgLeft)
@@ -22,7 +22,6 @@ class Enemy(pygame.sprite.Sprite):
         self.index = 0
 
     def update(self):
-        # Movimentação e atualização de sprite
         self.rect.x += self.moveDirection
         self.moveCounter += 1
         self.spriteChanger += 1
