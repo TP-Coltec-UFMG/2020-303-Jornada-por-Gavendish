@@ -2,6 +2,7 @@ import pygame
 
 from mundo import World
 pygame.init()
+pygame.mixer.init()
 screen = pygame.display.set_mode((900, 600))
 
 # Fontes e cores
@@ -22,13 +23,13 @@ class Player:
         self.imagesLeft = []
         self.imagesDead = []
         for num in range(1, 6):
-            imgRight = pygame.image.load(f'img/{daltonism}/walk{num}.png')
+            imgRight = pygame.image.load(f'assets/img/{daltonism}/walk{num}.png')
             imgRight = pygame.transform.scale(imgRight, (40, 80))
             imgLeft = pygame.transform.flip(imgRight, True, False)
             self.imagesRight.append(imgRight)
             self.imagesLeft.append(imgLeft)
         for num in range(1, 7):
-            imgDead = pygame.image.load(f'img/{daltonism}/death{num}.png')
+            imgDead = pygame.image.load(f'assets/img/{daltonism}/death{num}.png')
             imgDead = pygame.transform.scale(imgDead, (40, 80))
             self.imagesDead.append(imgDead)
         self.image = self.imagesRight[3]
@@ -60,6 +61,8 @@ class Player:
                 self.vel_y = -15
                 self.jumped = True
                 self.standCounter = 0
+                pygame.mixer.music.load('assets/sounds/jump.wav')
+                pygame.mixer.music.play(0)
             if not key[pygame.K_SPACE]:
                 self.jumped = False
                 self.standCounter = 0
@@ -122,14 +125,20 @@ class Player:
 
             # Checagem de colisão com os inimigos
             if pygame.sprite.spritecollide(self, enemy_group, False):
+                pygame.mixer.music.load('assets/sounds/death-enemy.mp3')
+                pygame.mixer.music.play(0)
                 gameOver = -1
             # Checagem de colisão com a lava
             if pygame.sprite.spritecollide(self, lava_group, False):
+                pygame.mixer.music.load('assets/sounds/death-lava.wav')
+                pygame.mixer.music.play(0)
                 gameOver = -1
 
             # Checagem de colisão com a porta de saída
             if keyCollected == 1:
                 if pygame.sprite.spritecollide(self, exit_group, False):
+                    pygame.mixer.music.load('assets/sounds/win.wav')
+                    pygame.mixer.music.play(0)
                     vanity_coin.remove(vanity_coin)
                     vanity_key.remove(vanity_key)
                     gameOver = 1
