@@ -1,4 +1,4 @@
-# Trabalho feito em pygame pelo grupo João Lucas, Arthur Feu, Gustavo Paiva e Caio Augusto
+# Trabalho feito em pygame pelo grupo Joao Lucas, Arthur Feu, Gustavo Paiva e Caio Augusto
 
 import pygame
 from jogador import Player
@@ -57,7 +57,7 @@ class Main:
 		self.tile_size = 50
 		self.gameOver = 0
 		self.level = 1
-		self.maxLevels = 2
+		self.maxLevels = 3
 		self.totalScore = 0
 		self.scoreInLevel = 0
 		self.keyCollected = 0
