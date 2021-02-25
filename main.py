@@ -7,6 +7,7 @@ from chave import Key
 from moeda import Coin
 
 pygame.init()
+pygame.mixer.init()
 screen = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Jornada por Gavendish')
 
@@ -49,8 +50,6 @@ class Button:
 
 		return action
 
-# Classe principal do jogo
-
 
 class Main:
 	def __init__(self, daltonism):
@@ -67,11 +66,11 @@ class Main:
 		self.daltonism = daltonism
 
 		# Carregando as imagens
-		bgImg = pygame.image.load(f'img/{self.daltonism}/bg1.png')
-		restartImg = pygame.image.load(f'img/{self.daltonism}/restart_btn.jpg')
+		bgImg = pygame.image.load(f'assets/img/{self.daltonism}/bg1.png')
+		restartImg = pygame.image.load(f'assets/img/{self.daltonism}/restart_btn.jpg')
 
 		# Carregando o mapa do jogo
-		archive = open(f'levels/level{self.level}.txt', 'r')
+		archive = open(f'assets/levels/level{self.level}.txt', 'r')
 		data = archive.read()
 		archive.close()
 		data = data.split('\n')
@@ -79,17 +78,14 @@ class Main:
 		for num in range(0, 12):
 			world_data.append(list(data[num]))
 
-		# Criação do jogador principal
 		player = Player(100, 600 - 130, self.daltonism)
 
-		# Criação dos grupos de sprite do jogo
 		enemyGroup = pygame.sprite.Group()
 		lavaGroup = pygame.sprite.Group()
 		coinGroup = pygame.sprite.Group()
 		exitGroup = pygame.sprite.Group()
 		keyGroup = pygame.sprite.Group()
 
-		# Criação da moeda e da chave que ficam no canto superior esquerdo, indicando a quantidade desses elementos coletados
 		vanityCoin = pygame.sprite.Group()
 		vanityKey = pygame.sprite.Group()
 		scoreCoin = Coin(self.tile_size // 2 - 3, self.tile_size // 2 - 8, self.daltonism)
@@ -97,7 +93,6 @@ class Main:
 		vanityCoin.add(scoreCoin)
 		vanityKey.add(scoreKey)
 
-		# Criação do mundo com os elementos criados anteriormente.
 		world = World(world_data, enemyGroup, lavaGroup, coinGroup, exitGroup, keyGroup, self.daltonism)
 
 		# Criação dos botões
@@ -113,12 +108,16 @@ class Main:
 			# Enquanto o jogador estiver no jogo
 			if self.gameOver == 0:
 				enemyGroup.update()
-				# Atualização do placar, com checagem se a moeda e a chave foram coletadas pelo jogador
+				# Atualização do placar, com checagem se a moeda foi coletada pelo jogador
 				if pygame.sprite.spritecollide(player, coinGroup, True):
 					self.totalScore += 1
 					self.scoreInLevel += 1
+					pygame.mixer.music.load('assets/sounds/coin.mp3')
+					pygame.mixer.music.play(0)
 				if pygame.sprite.spritecollide(player, keyGroup, True):
 					self.keyCollected = 1
+					pygame.mixer.music.load('assets/sounds/key.wav')
+					pygame.mixer.music.play(0)
 					exitGroup.update(self.keyCollected, self.daltonism)
 				coinscoreText = text_format('X ' + str(self.totalScore), font, 30, white)
 				keyscoreText = text_format('X ' + str(self.keyCollected), font, 30, white)
@@ -129,7 +128,6 @@ class Main:
 			if self.gameOver == 0:
 				enemyGroup.update()
 
-			# Desenhando os sprites na tela
 			enemyGroup.draw(screen)
 			lavaGroup.draw(screen)
 			coinGroup.draw(screen)
@@ -138,12 +136,6 @@ class Main:
 			vanityKey.draw(screen)
 			vanityCoin.draw(screen)
 
-			""" 
-			Captura da variável de game over
-				0 == o jogador está vivo
-				-1 == o jogador morreu
-				1 == o jogador passou de fase 
-			"""
 			self.gameOver = player.update(self.gameOver, world, enemyGroup, lavaGroup, exitGroup, self.keyCollected, vanityCoin, vanityKey)
 
 			# Caso o jogador morra
@@ -178,7 +170,7 @@ class Main:
 					vanityKey.add(scoreKey)
 				# Caso seja o último
 				else:
-					wonText = text_format('VOCE VENCEU!', font, 75, black)
+					wonText = text_format('VOCE VENCEU!', font, 75, white)
 					screen.blit(wonText, (600/2, -10))
 					if restartButton.draw():
 						# Reset do nível
@@ -192,7 +184,6 @@ class Main:
 						vanityCoin.add(scoreCoin)
 						vanityKey.add(scoreKey)
 
-			# Verificação se o usuário clicou para fechar o jogo
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					run = False
