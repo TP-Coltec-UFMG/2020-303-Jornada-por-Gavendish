@@ -17,10 +17,10 @@ class World:
     def __init__(self, data, enemy_group, lava_group, coin_group, exit_group, key_group, daltonism):
         self.tile_list = []
         # Carregando as imagens de blocos
-        dirtImg = pygame.image.load(f'img/{daltonism}/dirt.jpg')
-        grassImg = pygame.image.load(f'img/{daltonism}/grass.jpg')
-        platformImg = pygame.image.load(f'img/{daltonism}/platform.jpg')
-        platformwograssImg = pygame.image.load(f'img/{daltonism}/platform2.jpg')
+        dirtImg = pygame.image.load(f'assets/img/{daltonism}/dirt.jpg')
+        grassImg = pygame.image.load(f'assets/img/{daltonism}/grass.jpg')
+        platformImg = pygame.image.load(f'assets/img/{daltonism}/platform.jpg')
+        platformwograssImg = pygame.image.load(f'assets/img/{daltonism}/platform2.jpg')
         rowCount = 0
         for row in data:
             colCount = 0
@@ -83,7 +83,7 @@ class World:
         exitGroup.empty()
 
         # load in level data and create world
-        archive = open(f'levels/level{level}.txt', 'r')
+        archive = open(f'assets/levels/level{level}.txt', 'r')
         data = archive.read()
         archive.close()
         data = data.split('\n')
