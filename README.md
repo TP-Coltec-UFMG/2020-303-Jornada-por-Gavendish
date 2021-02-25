@@ -64,6 +64,10 @@ Agora imagens do jogo em si:
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/morte.jpg">
 
 > Imagem mostrando a tela após a morte do jogador.
+> 
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/nivel1.jpg">
+
+> Imagem mostrando o nível 1 do jogo.
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/nivel2.jpg">
 
