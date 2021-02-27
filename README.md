@@ -10,7 +10,7 @@ Python 3.8.6rc1
 $ git --version
 git version 2.24.0.windows.2
 ``` 
-Além disso, é necessário utilizar a IDE PyCharm para executar o código, já que ocorre um erro ao tentar executar o programa pelo terminal. Após criar um projeto novo (vazio) e baixar a pasta, ou cloná-la utilizando o seguinte comando
+Além disso, é necessário utilizar a IDE PyCharm para executar o código, já que ocorre um erro ao tentar executar o programa pelo terminal. Após criar um projeto novo (vazio) e baixar a pasta, ou cloná-la utilizando os seguintes comandos
 ```
 # Clonando o repositório principal do jogo
 $ git clone https://github.com/TP-Coltec-UFMG/Jornada-por-Gavendish
