@@ -174,8 +174,8 @@ class Main:
 					screen.blit(wonText, (600/2, -10))
 					if restartButton.draw():
 						# Reset do nível
-						level = 1
-						world = World.reset_level(level, player, enemyGroup, lavaGroup, exitGroup, coinGroup, keyGroup, self.daltonism)
+						self.level = 1
+						world = World.reset_level(self.level, player, enemyGroup, lavaGroup, exitGroup, coinGroup, keyGroup, self.daltonism)
 						self.gameOver = 0
 						self.keyCollected = 0
 						self.totalScore = 0
