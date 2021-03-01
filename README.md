@@ -73,6 +73,10 @@ Agora imagens do jogo em si:
 
 > Imagem mostrando o nível 2 do jogo.
 
+<img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/nivel4.jpg">
+
+> Imagem mostrando o nível 4 do jogo.
+
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/vitoria.jpg">
 
 > Imagem mostrando a vitória do jogador.
