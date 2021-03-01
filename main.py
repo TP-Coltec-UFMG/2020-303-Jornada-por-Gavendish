@@ -57,7 +57,7 @@ class Main:
 		self.tile_size = 50
 		self.gameOver = 0
 		self.level = 1
-		self.maxLevels = 3
+		self.maxLevels = 4
 		self.totalScore = 0
 		self.scoreInLevel = 0
 		self.keyCollected = 0
@@ -78,7 +78,7 @@ class Main:
 		for num in range(0, 12):
 			world_data.append(list(data[num]))
 
-		player = Player(100, 600 - 130, self.daltonism)
+		player = Player(50, 600 - 130, self.daltonism)
 
 		enemyGroup = pygame.sprite.Group()
 		lavaGroup = pygame.sprite.Group()
