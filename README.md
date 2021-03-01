@@ -47,7 +47,7 @@ Agora imagens do jogo em si:
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/telanormal.jpg">
 
-> Imagem mostrando a tela sem filtros de daltonismo.
+> Imagem mostrando o nível 3 sem filtros de daltonismo.
 
 <img src = "https://github.com/TP-Coltec-UFMG/JACP/blob/main/assets/img/telaprotanopia.jpg">
 
